@@ -1,8 +1,12 @@
-[![Downloads](http://pepy.tech/badge/opencv-python)](http://pepy.tech/project/opencv-python)
 
 ## OpenCV on Wheels
 
 **Unofficial** pre-built OpenCV packages for Python.
+
+**Strictly for Educational Purpose**
+**Do not Redistribute**
+**Not for Commercial Use**
+
 
 ### Installation and Usage
 

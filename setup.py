@@ -47,16 +47,16 @@ def main():
     # https://stackoverflow.com/questions/1405913/python-32bit-or-64bit-mode
     x64 = sys.maxsize > 2**32
 
-    package_name = "opencv-python"
+    package_name = "opencvz-python"
 
     if build_contrib and not build_headless:
-        package_name = "opencv-contrib-python"
+        package_name = "opencvz-contrib-python"
 
     if build_contrib and build_headless:
-        package_name = "opencv-contrib-python-headless"
+        package_name = "opencvz-contrib-python-headless"
 
     if build_headless and not build_contrib:
-        package_name = "opencv-python-headless"
+        package_name = "opencvz-python-headless"
 
     long_description = io.open('README.md', encoding="utf-8").read()
     package_version = get_opencv_version()
@@ -111,7 +111,7 @@ def main():
         # Otherwise, opencv scripts would want to install `.pyd' right into site-packages,
         # and skbuild bails out on seeing that
         "-DINSTALL_CREATE_DISTRIB=ON",
-
+	"-DOPENCV_ENABLE_NONFREE=ON",
         # See opencv/CMakeLists.txt for options and defaults
         "-DBUILD_opencv_apps=OFF",
         "-DBUILD_SHARED_LIBS=OFF",
@@ -171,14 +171,14 @@ def main():
     skbuild.setup(
         name=package_name,
         version=package_version,
-        url='https://github.com/skvark/opencv-python',
+        url='https://github.com/rr93/opencv-python',
         license='MIT',
         description='Wrapper package for OpenCV python bindings.',
         long_description=long_description,
         long_description_content_type="text/markdown",
         packages=packages,
         package_data=package_data,
-        maintainer="Olli-Pekka Heinisuo",
+        maintainer="OpenCVZ",
         include_package_data=True,
         ext_modules=EmptyListWithLength(),
         install_requires="numpy>=%s" % numpy_version,
